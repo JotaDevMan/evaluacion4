@@ -1,12 +1,12 @@
 import React from 'react';
 import './post-it.css';
 
-export default function PostIt({ title, description, important }){
-    const rotation = Math.random() < 0.5 ? -10 : 10;
+export default function PostIt({ id, title, description, important, rotation, eliminarNota }) {
     const cardColor = important ? 'rgb(255, 205, 205)' : 'rgb(255, 254, 205)';
 
     return (
         <div className="post-it-card" style={{ transform: `rotate(${rotation}deg)`, backgroundColor: cardColor }}>
+            <button className="delete-button" onClick={() => eliminarNota(id)}>X</button>
             <h3>{title}</h3>
             <p>{description}</p>
         </div>

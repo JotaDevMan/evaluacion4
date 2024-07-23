@@ -1,6 +1,6 @@
 .post-it-card {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     padding: 10px;
     margin: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
@@ -13,6 +13,7 @@
     word-wrap: break-word;
     overflow: hidden;
     text-overflow: ellipsis;
+    position: relative;
 }
 
 .post-it-card h3 {
@@ -34,5 +35,18 @@
     display: -webkit-box;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
-    line-clamp: 5; 
+    line-clamp: 5; /* Propiedad estándar para compatibilidad */
+}
+
+.delete-button {
+    flex: 1;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: transparent;
+    border: none;
+    color: rgb(0, 0, 0);
+    width: 25px;
+    height: 30px;
+    cursor: pointer;
 }

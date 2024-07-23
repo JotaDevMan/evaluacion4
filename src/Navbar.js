@@ -1,46 +1,46 @@
 import React, { useRef } from "react";
 
-export default function NavBar({ onAddPostIt }) {
-    const titleRef = useRef();
-    const descriptionRef = useRef();
-    const importantRef = useRef();
+export default function NavBar({ agregarNota }) {
+    const tituloRef = useRef();
+    const descripcionRef = useRef();
+    const importanteRef = useRef();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const title = titleRef.current.value;
-        const description = descriptionRef.current.value;
-        const important = importantRef.current.checked;
-        if (title && description) {
-            onAddPostIt(title, description, important);
-            titleRef.current.value = '';
-            descriptionRef.current.value = '';
-            importantRef.current.checked = false;
+        const titulo = tituloRef.current.value;
+        const descripcion = descripcionRef.current.value;
+        const importante = importanteRef.current.checked;
+        if (titulo && descripcion) {
+            agregarNota(titulo, descripcion, importante);
+            tituloRef.current.value = '';
+            descripcionRef.current.value = '';
+            importanteRef.current.checked = false;
         }
     };
 
     return (
         <div className="container">
-            <div className="row justify-content-left">
+            <div className="row justify-content-center">
                 <div className="col-md-8">
                     <div className="form-container">
                         <h1 className="text-left">Post It Simulator!</h1>
                         <form onSubmit={handleSubmit}>
-                            <div className="form-row d-flex">
+                            <div className="form-row d-flex align-items-center">
                                 <div className="col-md-4 mb-3 mr-3">
-                                    <input ref={titleRef} type="text" className="form-control" placeholder="Título"></input>
+                                    <input ref={tituloRef} type="text" className="form-control" placeholder="Título"></input>
                                 </div>
                                 <div className="col-md-6 mb-3 mx-3">
-                                    <input ref={descriptionRef} type="text" className="form-control" placeholder="Descripción"></input>
+                                    <input ref={descripcionRef} type="text" className="form-control" placeholder="Descripción"></input>
                                 </div>
                                 <div className="col-auto mb-3 mx-4">
                                     <div className="form-check">
-                                        <input ref={importantRef} className="form-check-input" type="checkbox" id="importantCheck"></input>
+                                        <input ref={importanteRef} className="form-check-input" type="checkbox" id="importantCheck"></input>
                                         <label className="form-check-label" htmlFor="importantCheck">
                                             ¡Importante!
                                         </label>
                                     </div>
                                 </div>
-                                <div className="col-7 mb-3">
+                                <div className="col-12 mb-3">
                                     <button type="submit" className="btn btn-dark w-100">Agregar</button>
                                 </div>
                             </div>
