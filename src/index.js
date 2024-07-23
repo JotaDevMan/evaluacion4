@@ -20,8 +20,11 @@ function App() {
     }, [postIts]);
 
     const agregarNota = (titulo, descripcion, importante) => {
-        const rotation = Math.random() < 0.5 ? -10 : 10;
-        setPostIts([...postIts, { id:uuid(), titulo, descripcion, importante, rotation }]);
+        let rotacionPostIt = Math.random() < 0.5 ? -10 : 10;
+        if (postIts.length > 0 && rotacionPostIt === postIts[postIts.length - 1].rotacionPostIt) {
+            rotacionPostIt = rotacionPostIt === -10 ? 10 : -10;
+        }
+        setPostIts([...postIts, { id:uuid(), titulo, descripcion, importante, rotacionPostIt: rotacionPostIt }]);
     };
 
     const eliminarNota = (id) => {
@@ -40,7 +43,7 @@ function App() {
                                 title={postIt.titulo} 
                                 description={postIt.descripcion} 
                                 important={postIt.importante}
-                                rotation={postIt.rotation}
+                                rotation={postIt.rotacionPostIt}
                                 eliminarNota={eliminarNota}
                             ></PostIt>
                         </div>
