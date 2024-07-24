@@ -8,6 +8,7 @@ import { v4 as uuid } from 'uuid';
 function App() {
     const [postIts, setPostIts] = useState([]);
 
+    // Carga las notas desde el localStorage
     useEffect(() => {
         const storedPostIts = JSON.parse(localStorage.getItem('post-its'));
         if (storedPostIts) {
@@ -15,10 +16,13 @@ function App() {
         }
     }, []);
 
+    // Guarda las notas en el localStorage 
+    // Esto funciona cada ves que se actualiza la pagina
     useEffect(() => {
         localStorage.setItem('post-its', JSON.stringify(postIts));
     }, [postIts]);
 
+    // Agregar una nueva nota
     const agregarNota = (titulo, descripcion, importante) => {
         let rotacionPostIt = Math.random() < 0.5 ? -10 : 10;
         if (postIts.length > 0 && rotacionPostIt === postIts[postIts.length - 1].rotacionPostIt) {
@@ -27,6 +31,7 @@ function App() {
         setPostIts([...postIts, { id:uuid(), titulo, descripcion, importante, rotacionPostIt: rotacionPostIt }]);
     };
 
+    // Eliminar una nota
     const eliminarNota = (id) => {
         setPostIts(postIts.filter(postIt => postIt.id !== id));
     };
