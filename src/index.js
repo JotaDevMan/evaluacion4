@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import './style.css';
+import './index.css';
 import NavBar from './Navbar';
 import PostIt from './Post-it';
 import { v4 as uuid } from 'uuid';
